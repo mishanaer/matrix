@@ -2,6 +2,8 @@
 
 Matrix rain effect for React. Falling characters, pointer highlights, light and dark themes.
 
+[Try the demo](https://mishanaer.com/ui/matrix)
+
 ## Run locally
 
 Install [Bun](https://bun.sh), then run:
