@@ -15,7 +15,6 @@ main { height: 100dvh; overflow: hidden; }
 .settings-content, .control-section { display: grid; gap: 12px; }
 .settings-content { max-width: 992px; margin-inline: auto; gap: 24px; }
 [data-slot="drawer-popup"] { border-color: var(--deslop-primary-10); }
-[data-slot="drawer-overlay"] { background: color-mix(in srgb, var(--accent-black) 25%, transparent); }
 .control-section + .control-section { border-top: 1px solid var(--deslop-primary-8); padding-top: 16px; margin-top: 4px; }
 .control-section h3 { margin: 0; color: var(--deslop-primary-60); font-size: 11px; line-height: 16px; font-weight: 400; }
 .choice-field { display: grid; gap: 6px; min-width: 0; }
