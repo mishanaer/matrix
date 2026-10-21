@@ -81,11 +81,11 @@ function App() {
     <div className="effect-stage" aria-label="Fullscreen effect">
       <Matrix className="rain-canvas" resetKey={resetKey} options={{ ...settings, color: `var(${ink})`, glowColor: `var(${glow})` }} />
     </div>
-    <Drawer open={visible} onOpenChange={setVisible} modal={false} disablePointerDismissal showSwipeHandle>
+    <Drawer open={visible} onOpenChange={setVisible} modal={false} showSwipeHandle>
       <div className="toolbar" aria-label="Effect controls">
         <Button variant="primary" asChild><a href="https://github.com/mishanaer/matrix" target="_blank" rel="noopener noreferrer">GitHub</a></Button>
         <Button variant="secondary" onClick={() => setDark(current => !current)}>{dark ? 'Light theme' : 'Dark theme'}</Button>
-        <DrawerTrigger render={<Button variant="secondary" />}>{visible ? 'Close settings' : 'Settings'}</DrawerTrigger>
+        <DrawerTrigger render={<Button variant="secondary" />}>Settings</DrawerTrigger>
         <Button variant="secondary" onClick={reset}>Reset</Button>
       </div>
       <DrawerContent className="h-[50dvh] max-h-[50dvh]">
