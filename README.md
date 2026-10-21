@@ -1,6 +1,6 @@
 # Matrix
 
-A fullscreen matrix rain effect for React. Falling characters, pointer highlights, live controls, and light and dark themes.
+Matrix rain effect for React. Falling characters, pointer highlights, light and dark themes.
 
 ## Run locally
 
