@@ -21,7 +21,16 @@ main { height: 100dvh; overflow: hidden; }
 .choice-field { display: grid; gap: 6px; min-width: 0; }
 .field-label { color: var(--deslop-primary-60); font-size: 11px; }
 .character-field > div { background-color: var(--deslop-primary-5); }
-.pointer-switch { --accent: var(--deslop-primary-10); }
+.pointer-switch {
+  --accent: var(--deslop-primary-10);
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--shape-input-radius, 8px);
+  background-color: var(--active);
+}
 .pointer-switch [role="switch"][aria-checked="true"] { background-color: var(--accent-blue) !important; }
 .pointer-switch:hover [role="switch"][aria-checked="true"] { background-color: color-mix(in srgb, var(--accent-blue) 90%, var(--deslop-primary)) !important; }
 .toolbar { position: fixed; right: 24px; top: 24px; display: flex; flex-wrap: wrap; justify-content: flex-end; max-width: calc(100% - 48px); align-items: center; gap: 10px; }
