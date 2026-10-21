@@ -9,3 +9,8 @@ test('renders on the server without browser globals or demo styles', () => {
   expect(markup).not.toContain('mask-image')
   expect(markup).not.toContain('Settings')
 })
+
+test('normalizes CSS opacity together with renderer options', () => {
+  expect(renderToStaticMarkup(<Matrix options={{ opacity: Infinity, lineHeight: 0 }} />)).toContain('opacity:0.5')
+  expect(renderToStaticMarkup(<Matrix options={{ opacity: -1 }} />)).toContain('opacity:0')
+})

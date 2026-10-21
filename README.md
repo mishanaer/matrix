@@ -31,13 +31,30 @@ import { Matrix } from './matrix'
 </div>
 ```
 
-Give the parent a size. The canvas fills it and resizes automatically. Color values accept CSS colors and variables. Pass updated options when your app changes theme; the component does not change global styles or manage the theme itself.
+Give the parent a size. The canvas fills it and observes its own CSS dimensions, so parent padding and custom canvas sizes do not stretch the characters. Color values accept CSS colors and variables. Pass updated options when your app changes theme; the component does not change global styles or manage the theme itself.
 
 `glowBrightness` controls pointer brightness: `0` hides it, `1` is the default, and `2` doubles it. Set `pointer: false` to disable highlights. An empty `characters` string clears the symbols. Increase `resetKey` to restart the rain.
 
+Character sets preserve whole visible symbols, including joined emoji, flags, and combining accents. The renderer reuses the split set between animation frames.
+
+Invalid types, omitted values, and non-finite numbers fall back to defaults. Finite numbers are clamped to these ranges:
+
+| Option | Range |
+| --- | --- |
+| `fontSize` | 8–96 px |
+| `lineHeight` | 4–128 px |
+| `density` | 0.1–4 |
+| `speed` | 0–10 |
+| `interval` | 16–1000 ms |
+| `opacity`, `decay`, `glowDecay` | 0–1 |
+| `radius` | 0–1000 px |
+| `glowBrightness` | 0–2 |
+
 The canvas is decorative and hidden from assistive technology. Reduced motion follows the system setting. Animation stops while the canvas is offscreen or the page is hidden. Server rendering is supported; the canvas starts after mounting.
 
-The defaults and types are exported from `src/matrix.tsx`. Without React, call `createRain(canvas, settings)` from `src/matrix-rain.js` and call `destroy()` when removing the canvas. The lower-level renderer expects all options; merge your values with `defaults`. Apply `opacity` and edge masking in your host styles when using it directly.
+Pointer events and settings changes are combined into at most one draw per animation frame. Disabled pointer highlights do not schedule work. Initial trails are seeded directly, without simulating hundreds of startup frames.
+
+The defaults and types are exported from `src/matrix.tsx`. Without React, size your canvas with CSS and call `createRain(canvas, settings)` from `src/matrix-rain.js`. The lower-level renderer accepts partial options and normalizes updates too. Mutate your settings object, then call `update(key)` or `rebuild()`; changes are applied on the next visible animation frame. Call `destroy()` when removing the canvas. Apply `opacity` and edge masking in your host styles when using it directly.
 
 ## Checks
 
@@ -47,7 +64,7 @@ bun run typecheck
 bun run build
 ```
 
-The build writes the demo to `dist`. Tests cover custom characters, trails, pointer brightness, resizing, cleanup, and server rendering.
+The build writes the demo to `dist`. Tests cover whole Unicode symbols, trails, invalid settings, pointer brightness, frame batching, visibility, reduced motion, CSS resizing, cleanup, and server rendering.
 
 ## Sources
 
