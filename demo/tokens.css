@@ -1,4 +1,4 @@
-/* From deslop-colors.md */
+/* Source: https://github.com/mishanaer/deslop/blob/c38287513d3d1e4b04be0d349380633c1a9d49f2/primitives/colors.md */
 :root {
   --accent-red: light-dark(#E36C5A, #E29183);
   --accent-red-background: light-dark(#FEF1EE, #31201D);

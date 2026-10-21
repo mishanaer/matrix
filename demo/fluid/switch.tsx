@@ -1,5 +1,5 @@
 // Source: https://www.fluidfunctionalism.com/r/base/switch.json
-// Only import paths are adapted to the existing Richbox utilities.
+// Import paths use the existing Richbox utilities; colors use Deslop tokens.
 "use client";
 
 import {
@@ -291,16 +291,14 @@ const Switch = forwardRef<HTMLDivElement, SwitchProps>(
             "transition-colors duration-80",
             // Only on :focus-visible, so a click leaves no ring. The 2px
             // offset is filled with the background to part it from the track.
-            "focus-visible:ring-1 focus-visible:ring-[color:var(--focus-ring,#6B97FF)] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            "focus-visible:ring-1 focus-visible:ring-[color:var(--focus-ring,var(--accent-blue)))] focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           )}
           style={{
             width: m.trackWidth,
             height: m.trackHeight,
-            // On: #6B97FF, darkening to #5C89F2 on hover. Off: --accent, mixing
-            // in 10% of the overlay color on hover (darker in light mode,
-            // lighter in dark), crossfaded by transition-colors over 80ms.
+            // Deslop's blue follows the theme; the thumb supplies hover feedback.
             backgroundColor: checked
-              ? hovered ? "#5C89F2" : "#6B97FF"
+              ? "var(--accent-blue)"
               : hovered
                 ? "color-mix(in oklab, var(--accent), rgb(var(--overlay)) 10%)"
                 : "var(--accent)",

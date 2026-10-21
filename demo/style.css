@@ -31,9 +31,8 @@ main { height: 100dvh; overflow: hidden; }
   border-radius: var(--shape-input-radius, 8px);
   background-color: var(--active);
 }
-.pointer-switch [role="switch"][aria-checked="true"] { background-color: var(--accent-blue) !important; }
-.pointer-switch:hover [role="switch"][aria-checked="true"] { background-color: color-mix(in srgb, var(--accent-blue) 90%, var(--deslop-primary)) !important; }
 .toolbar { position: fixed; right: 24px; top: 24px; display: flex; flex-wrap: wrap; justify-content: flex-end; max-width: calc(100% - 48px); align-items: center; gap: 10px; }
+.toolbar > :is(button, a) { -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 @media (min-width: 768px) {
   .settings-content { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
   .control-section + .control-section { border-top: 0; padding-top: 0; margin-top: 0; }
